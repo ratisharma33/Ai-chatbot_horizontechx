@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rati Sharma - Horizon TechX Submission</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="w-full max-w-2xl h-[660px] bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+        
+        <div class="bg-slate-950 p-2 flex border-b border-slate-800 gap-2">
+            <button onclick="switchTab('bot-tab')" id="btn-bot-tab" class="flex-1 py-2 text-sm font-semibold rounded-xl bg-indigo-600 text-white transition-all flex items-center justify-center gap-2">
+                <i data-lucide="message-square" class="w-4 h-4"></i> Task 2: AI Chatbot
+            </button>
+            <button onclick="switchTab('trans-tab')" id="btn-trans-tab" class="flex-1 py-2 text-sm font-semibold rounded-xl bg-slate-900 text-slate-400 hover:text-slate-200 transition-all flex items-center justify-center gap-2">
+                <i data-lucide="languages" class="w-4 h-4"></i> Task 1: NLP Translator
+            </button>
+        </div>
+
+        <div id="bot-tab" class="flex flex-col flex-1 overflow-hidden">
+            <div class="p-4 bg-slate-800/40 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-indigo-600 rounded-xl"><i data-lucide="code" class="w-4 h-4"></i></div>
+                    <div>
+                        <h2 class="font-bold text-sm">Rati Sharma • Portfolio Bot</h2>
+                        <p class="text-xs text-slate-400">Chandigarh University BCA Student</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chat-feed" class="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-950/20">
+                <div class="flex gap-3 max-w-[85%]">
+                    <div class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center text-xs shrink-0"><i data-lucide="bot" class="w-4 h-4"></i></div>
+                    <div class="p-3.5 bg-slate-800 text-sm rounded-2xl rounded-tl-none leading-relaxed">
+                        Hi! I'm Rati's Portfolio Assistant. Ask me about my coding skills, full-stack projects, or my Horizon TechX internship milestone progress!
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-4 pb-2 bg-slate-900 flex flex-wrap gap-2">
+                <button onclick="sendSuggestion('What are your skills?')" class="text-[11px] bg-slate-950 border border-slate-800 text-slate-400 px-2.5 py-1 rounded-lg">What are your skills?</button>
+                <button onclick="sendSuggestion('Tell me about your projects')" class="text-[11px] bg-slate-950 border border-slate-800 text-slate-400 px-2.5 py-1 rounded-lg">Tell me about your projects</button>
+            </div>
+
+            <form onsubmit="handleMessageSubmit(event)" class="p-3 bg-slate-900 border-t border-slate-800/80 flex gap-2">
+                <input type="text" id="user-input" placeholder="Ask anything..." class="flex-1 bg-slate-950 border border-slate-800 focus:border-indigo-500 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none">
+                <button type="submit" class="p-3 bg-indigo-600 text-white rounded-xl"><i data-lucide="send" class="w-4 h-4"></i></button>
+            </form>
+        </div>
+
+        <div id="trans-tab" class="hidden flex flex-col flex-1 p-4 gap-4 overflow-y-auto">
+            <div>
+                <h2 class="font-bold text-base">Language Translation Node</h2>
+                <p class="text-xs text-slate-400">Task 1: Real-time API NLP Translation Engine</p>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <label class="text-xs text-slate-400 font-medium">Source Language (English)</label>
+                <textarea id="source-text" placeholder="Type text here to translate..." class="w-full h-24 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm resize-none focus:outline-none focus:border-indigo-500"></textarea>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <div class="flex justify-between items-center">
+                    <label class="text-xs text-slate-400 font-medium">Target Language</label>
+                    <select id="target-lang" class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-2 py-1 focus:outline-none">
+                        <option value="es">Spanish (Español)</option>
+                        <option value="fr">French (Français)</option>
+                        <option value="de">German (Deutsch)</option>
+                        <option value="hi">Hindi (हिन्दी)</option>
+                    </select>
+                </div>
+                <div id="translated-box" class="w-full h-24 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-400 overflow-y-auto italic">
+                    Translation will appear here...
+                </div>
+            </div>
+
+            <button onclick="runTranslation()" id="trans-btn" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 font-semibold rounded-xl text-sm transition-all flex items-center justify-center gap-2">
+                Translate Text
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Navigation Controller logic
+        function switchTab(tabId) {
+            document.getElementById('bot-tab').classList.add('hidden');
+            document.getElementById('trans-tab').classList.add('hidden');
+            document.getElementById(tabId).classList.remove('hidden');
+
+            document.getElementById('btn-bot-tab').className = "flex-1 py-2 text-sm font-semibold rounded-xl " + (tabId === 'bot-tab' ? "bg-indigo-600 text-white" : "bg-slate-900 text-slate-400");
+            document.getElementById('btn-trans-tab').className = "flex-1 py-2 text-sm font-semibold rounded-xl " + (tabId === 'trans-tab' ? "bg-indigo-600 text-white" : "bg-slate-900 text-slate-400");
+        }
+
+        // --- TASK 2 NLP ENGINE ---
+        const FAQ_DATASET = [
+            { keywords: ["hello", "hi", "skills", "languages"], response: "Rati Sharma is fluent in C++, Java, JavaScript, React.js, Tailwind CSS, and analytics tools like Tableau." },
+            { keywords: ["projects", "sudoku", "geopulse"], response: "Key developments include 'GeoPulse' (a live climate crisis map tracking system leveraging NASA APIs) and an automated 9x9 Sudoku solver engine." },
+            { keywords: ["deloitte", "experience", "internship"], response: "Rati completed a Data Analyst virtual internship sequence with Deloitte, modeling operational business metric views using Tableau." }
+        ];
+
+        function matchFAQ(input) {
+            const tokens = input.toLowerCase().split(/\s+/);
+            let bestResponse = "I can tell you about Rati's 'skills', 'projects', or 'Deloitte experience'!";
+            let topScore = 0;
+
+            FAQ_DATASET.forEach(item => {
+                let score = 0;
+                tokens.forEach(t => item.keywords.forEach(k => { if(k.includes(t) || t.includes(k)) score++; }));
+                if(score > topScore) { topScore = score; bestResponse = item.response; }
+            });
+            return bestResponse;
+        }
+
+        function appendMessage(sender, text) {
+            const feed = document.getElementById('chat-feed');
+            const div = document.createElement('div');
+            div.className = `flex gap-3 max-w-[85%] ${sender === 'user' ? 'ml-auto flex-row-reverse' : ''}`;
+            div.innerHTML = `<div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold bg-slate-800">${sender==='user'?'RS':'Bot'}</div><div class="p-3 bg-slate-800 rounded-2xl text-sm">${text}</div>`;
+            feed.appendChild(div);
+            feed.scrollTop = feed.scrollHeight;
+        }
+
+        function handleMessageSubmit(e) {
+            e.preventDefault();
+            const el = document.getElementById('user-input');
+            if(!el.value.trim()) return;
+            appendMessage('user', el.value);
+            const reply = matchFAQ(el.value);
+            setTimeout(() => appendMessage('bot', reply), 300);
+            el.value = '';
+        }
+
+        function sendSuggestion(txt) { appendMessage('user', txt); setTimeout(() => appendMessage('bot', matchFAQ(txt)), 300); }
+
+        // --- TASK 1 TRANSLATION ENGINE ---
+        async function runTranslation() {
+            const text = document.getElementById('source-text').value.trim();
+            const target = document.getElementById('target-lang').value;
+            const outputBox = document.getElementById('translated-box');
+            if(!text) return;
+
+            outputBox.innerText = "Running language mapping analytics...";
+            try {
+                const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|${target}`);
+                const data = await res.json();
+                outputBox.innerText = data.responseData.translatedText;
+                outputBox.classList.remove('italic', 'text-slate-400');
+            } catch(e) {
+                outputBox.innerText = "Error connecting to NLP translation sequence.";
+            }
+        }
+    </script>
+</body>
+</html>
