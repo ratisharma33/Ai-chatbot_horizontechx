@@ -1,14 +1,49 @@
-# 🤖 Rati Sharma - Personalized AI FAQ Chatbot
+# 🛰️ Horizon TechX Internship Workspace — Core NLP Nodes
 
-An interactive, responsive AI FAQ Chatbot built using **React** and **Tailwind CSS** for the **Horizon TechX Internship Assessment (Task 2)**.
+<div align="center">
+  <img src="https://capsule-render.vercel.app/render?type=waving&color=3b82f6&height=180&section=header&text=Rati%20Sharma&fontSize=40&fontColor=ffffff" alt="Header Banner" />
 
-## 🌟 Features
-- **Personalized Portfolio Routing:** Intelligently answers queries regarding my tech stack (C++, Java, React), academic background at Chandigarh University, and data analytics experience (Deloitte Virtual Internship).
-- **Custom NLP Matching Engine:** Implements localized tokenization, punctuation removal, stopword filtering, and a sentence keyword density scoring matrix to classify user intents without external APIs.
-- **Modern Chat Interface:** Clean dark-mode UI with dynamic typing animations, custom avatar configurations, and interactive recommendation chips.
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/GitHub_Pages-222831?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Pages" />
+</div>
 
-## 🛠️ Tech Stack
-- **Frontend Framework:** React (Vite)
-- **Styling:** Tailwind CSS
-- **Icons:** Lucide React
-- **Logic:** Custom Core NLP Keyword Overlap Matching Algorithm
+---
+
+## 📌 Project Overview
+This repository contains my official project submissions for the **Horizon TechX Software Engineering Internship**. To fulfill the completion criteria efficiently, this project is engineered as a seamless **All-in-One single-file application** (`index.html`) that bundles two separate interactive Natural Language Processing (NLP) modules into a single, clean workspace.
+
+### 🔗 Live Deployment Matrix
+👉 **[Click Here to Launch the Live App Interface](https://your-username.github.io/your-repo-name/)** *(Note: Replace the link above with your actual live GitHub Pages URL!)*
+
+---
+
+## 🛠️ Tasks Completed & Architecture
+
+| Module Node | Assignment Target | Core System Logic | User Interface Highlights |
+| :--- | :--- | :--- | :--- |
+| **Task 2** | AI Chatbot for FAQs | Localized tokenization, stopword cleaning, & sentence-density scoring matrix. | Custom recommendation chips, dynamic scroll anchors, branded avatar templates. |
+| **Task 1** | Language Translation Tool | Asynchronous Fetch API layer communicating with global translation networks. | Dynamic selection dropdowns, active loading state trackers, async catch exception fallback. |
+
+---
+
+## 🎯 Deep Dive: Personalized Agent Integration (Task 2)
+
+The core feature of this workspace is a customized **AI FAQ Assistant** built specifically to route queries about my professional background, technical competencies, and academic track:
+
+* **Academic Tracker:** Pre-configured anchors highlighting my Bachelor of Computer Applications (BCA) degree track at **Chandigarh University**.
+* **Technical Stack Vectors:** Instant insight parameters highlighting my fluency across **C++, Java, JavaScript, React.js, and Tableau**.
+* **Project Insights:** Instant summaries mapping my key portfolios, including the *GeoPulse Climate Tracker* and an automated *9x9 Sudoku Solver Engine*.
+* **Experience Metrics:** Showcases professional data analysis milestones achieved during my *Deloitte Virtual Internship*.
+
+> ⚠️ **Evaluation Compliance:** This layout embeds **Task 1** and **Task 2** side-by-side behind an optimized toggle script. This directly satisfies the core internship evaluation constraint requiring a combination of *at least 2 or 3 completed tasks* for certificate verification.
+
+---
+
+## 📂 Minimal Repository File Structure
+Because this workspace leverages cloud-hosted Content Delivery Networks (CDNs) for asset parsing, the entire workspace runs with lightning speed from a minimal blueprint footprint:
+```text
+your-repository-name/
+├── index.html        # Central Gateway (Bundled Interface & Control Scripts)
+└── README.md         # Professional Portfolio & Project Documentation
