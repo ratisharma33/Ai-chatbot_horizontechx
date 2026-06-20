@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rati Sharma - Language Translator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-6 flex flex-col gap-4">
+        
+        <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+            <div>
+                <h2 class="font-bold text-lg">Language Translation Node</h2>
+                <p class="text-xs text-slate-400">Task 1: Real-time API NLP Translation Engine</p>
+            </div>
+            <a href="chatbot.html" class="text-xs bg-slate-800 border border-slate-700 text-indigo-400 px-3 py-2 rounded-xl hover:bg-slate-700 transition-colors">Open Chatbot →</a>
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <label class="text-xs text-slate-400 font-medium">Source Text (English)</label>
+            <textarea id="source-text" placeholder="Type text here to translate..." class="w-full h-28 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm resize-none focus:outline-none focus:border-indigo-500"></textarea>
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <div class="flex justify-between items-center">
+                <label class="text-xs text-slate-400 font-medium">Target Language</label>
+                <select id="target-lang" class="bg-slate-800 border border-slate-700 text-xs rounded-lg px-2 py-1.5 text-slate-200 focus:outline-none">
+                    <option value="es">Spanish (Español)</option>
+                    <option value="fr">French (Français)</option>
+                    <option value="de">German (Deutsch)</option>
+                    <option value="hi">Hindi (हिन्दी)</option>
+                </select>
+            </div>
+            <div id="translated-box" class="w-full h-28 bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-500 overflow-y-auto italic">
+                Translation will appear here...
+            </div>
+        </div>
+
+        <button onclick="runTranslation()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 font-semibold rounded-xl text-sm transition-all flex items-center justify-center gap-2">
+            Translate Text
+        </button>
+    </div>
+
+    <script>
+        async function runTranslation() {
+            const text = document.getElementById('source-text').value.trim();
+            const target = document.getElementById('target-lang').value;
+            const outputBox = document.getElementById('translated-box');
+            if(!text) return;
+
+            outputBox.innerText = "Running language mapping analytics...";
+            try {
+                const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|${target}`);
+                const data = await res.json();
+                outputBox.innerText = data.responseData.translatedText;
+                outputBox.classList.remove('italic', 'text-slate-500');
+            } catch(e) {
+                outputBox.innerText = "Error connecting to NLP translation sequence.";
+            }
+        }
+    </script>
+</body>
+</html>
