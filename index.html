@@ -3,36 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rati Sharma | Interactive AI Chatbot</title>
+    <title>Rati Sharma | Interactive AI Workspace</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        @keyframes msgSlideUp {
+            0% { opacity: 0; transform: translateY(16px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-msg {
+            animation: msgSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .glow-glow {
+            box-shadow: 0 0 30px -5px rgba(99, 102, 241, 0.2);
+        }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-center p-4 selection:bg-indigo-500/30">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col items-center justify-center p-3 selection:bg-indigo-500/30">
 
-    <div class="w-full max-w-2xl h-[640px] bg-slate-900/80 backdrop-blur-xl border border-indigo-500/20 rounded-3xl shadow-[0_0_50px_-12px_rgba(99,102,241,0.15)] flex flex-col overflow-hidden">
+    <div class="w-full max-w-2xl h-[82vh] sm:h-[640px] bg-slate-900/90 backdrop-blur-2xl border border-indigo-500/20 rounded-3xl glow-glow flex flex-col overflow-hidden transition-all duration-300">
         
-        <div class="p-4 bg-slate-800/40 border-b border-slate-800 flex items-center justify-between">
+        <div class="p-4 bg-slate-800/40 border-b border-slate-800/80 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="p-2.5 bg-gradient-to-tr from-indigo-600 to-violet-500 text-white rounded-2xl shadow-lg shadow-indigo-500/20">
-                    <i data-lucide="bot" class="w-5 h-5"></i>
+                <div class="p-2.5 bg-gradient-to-br from-indigo-600 to-violet-500 text-white rounded-2xl shadow-md shadow-indigo-500/20">
+                    <i data-lucide="cpu" class="w-5 h-5"></i>
                 </div>
                 <div>
-                    <h2 class="font-bold text-base tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 to-slate-200">Rati Sharma • AI Portfolio Agent</h2>
-                    <p class="text-xs text-indigo-400 font-medium">Task 2: AI Chatbot for FAQs (NLP)</p>
+                    <h2 class="font-bold text-base tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 to-slate-100">Rati Sharma • Portfolio Agent</h2>
+                    <p class="text-xs text-indigo-400 font-medium">Task 2: Responsive NLP FAQ Engine</p>
                 </div>
             </div>
             <div class="flex items-center gap-2 px-3 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-semibold rounded-full">
-                <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-ping"></span> Live Engine
+                <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span> Active Matrix
             </div>
         </div>
 
-        <div id="chat-feed" class="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-slate-800">
-            <div class="flex gap-3 max-w-[85%] animate-fade-in">
-                <div class="w-9 h-9 rounded-xl bg-slate-800 text-indigo-400 border border-slate-700/60 flex items-center justify-center font-bold text-sm shrink-0 shadow-inner">
+        <div id="chat-feed" class="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-950/10 scroll-smooth">
+            <div class="flex gap-3 max-w-[85%] animate-msg">
+                <div class="w-9 h-9 rounded-xl bg-slate-800/80 text-indigo-400 border border-slate-700/50 flex items-center justify-center shrink-0 shadow-md">
                     <i data-lucide="sparkles" class="w-4 h-4"></i>
                 </div>
-                <div class="p-4 bg-slate-800/50 text-slate-100 border border-slate-700/30 rounded-2xl rounded-tl-none text-sm leading-relaxed shadow-sm">
-                    Hey! 👋 I am Rati's interactive FAQ agent. Ask me about my core skills, full-stack web projects, Chandigarh University background, or data analytics training!
+                <div class="p-3.5 bg-slate-800/60 text-slate-100 border border-slate-700/30 rounded-2xl rounded-tl-none text-sm leading-relaxed">
+                    Hi there! I am Rati's upgraded intelligent portfolio agent. Try typing naturally! Ask me about my core coding skills, web projects, Chandigarh University background, or data analytics simulations.
                 </div>
             </div>
         </div>
+
+        <div class="px-4 pb-3 bg-slate-900/20 flex flex-wrap gap-2">
+            <button onclick="sendSuggestion('What are your skills?')" class="text-xs font-medium bg-slate-950 hover:bg-slate-800 border border-slate-800/60 hover:border-indigo-500/40 text-slate-400 hover:text-indigo-300 px-3 py-2 rounded-xl transition-all duration-200 active:scale-95">⚡ Core Tech Stack</button>
+            <button onclick="sendSuggestion('Tell me about your projects')" class="text-xs font-medium bg-slate-950 hover:bg-slate-800 border border-slate-800/60 hover:border-indigo-500/40 text-slate-400 hover:text-indigo-300 px-3 py-2 rounded-xl transition-all duration-200 active:scale-95">🛠️ Practical Projects</button>
+            <button onclick="sendSuggestion('Deloitte Experience')" class="text-xs font-medium bg-slate-950 hover:bg-slate-800 border border-slate-800/60 hover:border-indigo-500/40 text-slate-400 hover:text-indigo-300 px-3 py-2 rounded-xl transition-all duration-200 active:scale-95">📊 Deloitte Analytics</button>
+            <button onclick="sendSuggestion('Education')" class="text-xs font-medium bg-slate-950 hover:bg-slate-800 border border-slate-800/60 hover:border-indigo-500/40 text-slate-400 hover:text-indigo-300 px-3 py-2 rounded-xl transition-all duration-200 active:scale-95">🎓 University Track</button>
+        </div>
+
+        <form id="chat-form" onsubmit="handleMessageSubmit(event)" class="p-4 bg-slate-950/80 border-t border-slate-800/60 flex gap-2.5 items-center">
+            <input
+                type="text"
+                id="user-input"
+                placeholder="Type a question naturally..."
+                class="flex-1 bg-slate-900/60 border border-slate-800 focus:border-indigo-500/80 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none transition-all duration-200"
+                required
+                autocomplete="off"
+            >
+            <button type="submit" class="p-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl shadow-md active:scale-95 transition-all flex items-center justify-center shrink-0">
+                <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+        </form>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // High-Fidelity Local Database Mapping
+        const FAQ_DATASET = [
+            { 
+                keywords: ["hello", "hi", "hey", "greetings", "who are you", "about"], 
+                response: "Hello! I am Rati Sharma's AI representative node. I can answer questions regarding my development profile, engineering stack, or academic portfolio landmarks!" 
+            },
+            { 
+                keywords: ["skills", "languages", "tech", "stack", "code", "java", "c++", "react", "javascript"], 
+                response: "Rati features comprehensive technical depth across both full-stack programming and data processing pipelines. Her foundational tools include **C++, Java, JavaScript, React.js, HTML5, CSS3, Tailwind CSS**, and **Tableau** for building business intelligence dashboards." 
+            },
+            { 
+                keywords: ["projects", "portfolio", "sudoku", "geopulse", "ecoscan", "build"], 
+                response: "Rati's key engineering milestones include:<br><br>1. **GeoPulse**: A real-time climate crisis mapping layout tracking natural events pulling data from active NASA EONET APIs.<br>2. **EcoScan**: A remote-sensing forest health canvas tracking regional vegetation densities via satellite metrics.<br>3. **9x9 Sudoku Solver**: A responsive program built with C++ and Java engineered with automatic layout mistake trackers and Hint modules." 
+            },
+            { 
+                keywords: ["deloitte", "experience", "simulation", "analytics", "dashboard", "spreadsheet"], 
+                response: "Rati successfully completed the **Deloitte Data Analytics Job Simulation**. During this project track, she acted as a data analyst using **Tableau** and **Google Spreadsheets** to architect user interactive analytics dashboards and audit complex metric performance trends." 
+            },
+            { 
+                keywords: ["education", "college", "university", "bca", "chandigarh", "semester"], 
+                response: "Rati is an undergraduate student currently pursuing her **Bachelor of Computer Applications (BCA)** at **Chandigarh University**. She is in her 4th semester, specializing in application architectures and full-stack development tracks." 
+            }
+        ];
+
+        const chatFeed = document.getElementById('chat-feed');
+
+        function appendMessage(sender, text) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `flex gap-3 max-w-[85%] animate-msg ${sender === 'user' ? 'ml-auto flex-row-reverse' : ''}`;
+            
+            const avatar = sender === 'user' 
+                ? `<div class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-xs font-bold shadow-md shrink-0">RS</div>`
+                : `<div class="w-9 h-9 rounded-xl bg-slate-800 text-indigo-400 border border-slate-700/50 flex items-center justify-center shrink-0"><i data-lucide="bot" class="w-4 h-4"></i></div>`;
+
+            const bubbleClass = sender === 'user'
+                ? `bg-indigo-600 text-white rounded-tr-none shadow-sm`
+                : `bg-slate-800/60 text-slate-100 border border-slate-700/30 rounded-tl-none`;
+
+            msgDiv.innerHTML = `
+                ${avatar}
+                <div class="p-3.5 ${bubbleClass} rounded-2xl text-sm leading-relaxed break-words">
+                    ${text}
+                </div>
+            `;
+            chatFeed.appendChild(msgDiv);
+            lucide.createIcons();
+            chatFeed.scrollTop = chatFeed.scrollHeight;
+        }
+
+        function appendTypingIndicator() {
+            const indicator = document.createElement('div');
+            indicator.id = 'typing-indicator';
+            indicator.className = 'flex gap-3 max-w-[85%] animate-msg';
+            indicator.innerHTML = `
+                <div class="w-9 h-9 rounded-xl bg-slate-800 text-indigo-400 border border-slate-700/50 flex items-center justify-center shrink-0"><i data-lucide="bot" class="w-4 h-4"></i></div>
+                <div class="bg-slate-800/40 border border-slate-700/20 p-4 rounded-2xl rounded-tl-none flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce" style="animation-delay: -0.3s"></span>
+                    <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce" style="animation-delay: -0.15s"></span>
+                    <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce"></span>
+                </div>
+            `;
+            chatFeed.appendChild(indicator);
+            lucide.createIcons();
+            chatFeed.scrollTop = chatFeed.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const el = document.getElementById('typing-indicator');
+            if(el) el.remove();
+        }
+
+        // Upgraded Dual-Stage Intent Matching Algorithm
+        function engineProcess(query) {
+            const cleanQuery = query.toLowerCase().replace(/[^\w\s]/g, "");
+            const tokens = cleanQuery.split(/\s+/).filter(t => t.length > 2);
+            
+            let response = "I couldn't quite find an exact match for that question. Try asking me about my **skills**, my **projects**, my **Chandigarh University education**, or my **Deloitte data simulation**!";
+            let bestScore = 0;
+
+            FAQ_DATASET.forEach(faq => {
+                let score = 0;
+
+                // Stage 1: Check if input explicitly contains key words or full concepts (High Weight)
+                faq.keywords.forEach(key => {
+                    if (cleanQuery.includes(key)) {
+                        score += 2.5;
+                    }
+                });
+
+                // Stage 2: Segment token intersection analysis (Fuzzy Matching Weight)
+                tokens.forEach(token => {
+                    faq.keywords.forEach(key => {
+                        if (key.includes(token) || token.includes(key)) {
+                            score += 1.0;
+                        }
+                    });
+                });
+
+                if (score > bestScore && score >= 1.5) {
+                    bestScore = score;
+                    response = faq.response;
+                }
+            });
+            return response;
+        }
+
+        function executeCycle(text) {
+            appendMessage('user', text);
+            appendTypingIndicator();
+            
+            setTimeout(() => {
+                removeTypingIndicator();
+                const output = engineProcess(text);
+                appendMessage('bot', output);
+            }, 500);
+        }
+
+        function handleMessageSubmit(e) {
+            e.preventDefault();
+            const inputEl = document.getElementById('user-input');
+            const targetText = inputEl.value.trim();
+            if(!targetText) return;
+
+            executeCycle(targetText);
+            inputEl.value = '';
+        }
+
+        function sendSuggestion(text) {
+            executeCycle(text);
+        }
+    </script>
+</body>
+</html>
