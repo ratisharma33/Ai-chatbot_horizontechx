@@ -12,7 +12,7 @@
 ---
 
 ## 📌 Project Overview
-This repository contains my official project submissions for the **Horizon TechX Software Engineering Internship**. To fulfill the completion criteria efficiently, this project is engineered as a seamless **All-in-One single-file application** (`index.html`) that bundles two separate interactive Natural Language Processing (NLP) modules into a single, clean workspace.
+This repository contains my official project submissions for the **Horizon TechX data science and AI Internship**. To fulfill the completion criteria efficiently, this project as a seamless **All-in-One single-file application** (`index.html`) that bundles two separate interactive Natural Language Processing (NLP) modules into a single, clean workspace.
 
 ### 🔗 Live Deployment Matrix
 👉 **[Click Here to Launch the Live App Interface](https://your-username.github.io/your-repo-name/)** *(Note: Replace the link above with your actual live GitHub Pages URL!)*
@@ -24,7 +24,6 @@ This repository contains my official project submissions for the **Horizon TechX
 | Module Node | Assignment Target | Core System Logic | User Interface Highlights |
 | :--- | :--- | :--- | :--- |
 | **Task 2** | AI Chatbot for FAQs | Localized tokenization, stopword cleaning, & sentence-density scoring matrix. | Custom recommendation chips, dynamic scroll anchors, branded avatar templates. |
-| **Task 1** | Language Translation Tool | Asynchronous Fetch API layer communicating with global translation networks. | Dynamic selection dropdowns, active loading state trackers, async catch exception fallback. |
 
 ---
 
@@ -36,8 +35,6 @@ The core feature of this workspace is a customized **AI FAQ Assistant** built sp
 * **Technical Stack Vectors:** Instant insight parameters highlighting my fluency across **C++, Java, JavaScript, React.js, and Tableau**.
 * **Project Insights:** Instant summaries mapping my key portfolios, including the *GeoPulse Climate Tracker* and an automated *9x9 Sudoku Solver Engine*.
 * **Experience Metrics:** Showcases professional data analysis milestones achieved during my *Deloitte Virtual Internship*.
-
-> ⚠️ **Evaluation Compliance:** This layout embeds **Task 1** and **Task 2** side-by-side behind an optimized toggle script. This directly satisfies the core internship evaluation constraint requiring a combination of *at least 2 or 3 completed tasks* for certificate verification.
 
 ---
 
