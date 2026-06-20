@@ -1,10 +1,9 @@
-@import "{{ site.theme }}";
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rati Sharma | Interactive AI Workspace</title>
+    <title>Rati Sharma | Interactive AI Chatbot</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -15,149 +14,25 @@
         <div class="p-4 bg-slate-800/40 border-b border-slate-800 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <div class="p-2.5 bg-gradient-to-tr from-indigo-600 to-violet-500 text-white rounded-2xl shadow-lg shadow-indigo-500/20">
-                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    <i data-lucide="bot" class="w-5 h-5"></i>
                 </div>
                 <div>
-                    <h2 class="font-bold text-base tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 to-slate-200">Rati Sharma • AI Agent</h2>
-                    <p class="text-xs text-indigo-400 font-medium">BCA Student @ Chandigarh University</p>
+                    <h2 class="font-bold text-base tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 to-slate-200">Rati Sharma • AI Portfolio Agent</h2>
+                    <p class="text-xs text-indigo-400 font-medium">Task 2: AI Chatbot for FAQs (NLP)</p>
                 </div>
             </div>
             <div class="flex items-center gap-2 px-3 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-semibold rounded-full">
-                <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-ping"></span> NLP Mode
+                <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-ping"></span> Live Engine
             </div>
         </div>
 
         <div id="chat-feed" class="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-slate-800">
             <div class="flex gap-3 max-w-[85%] animate-fade-in">
                 <div class="w-9 h-9 rounded-xl bg-slate-800 text-indigo-400 border border-slate-700/60 flex items-center justify-center font-bold text-sm shrink-0 shadow-inner">
-                    <i data-lucide="bot" class="w-4 h-4"></i>
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
                 </div>
                 <div class="p-4 bg-slate-800/50 text-slate-100 border border-slate-700/30 rounded-2xl rounded-tl-none text-sm leading-relaxed shadow-sm">
-                    Hey! 👋 I am Rati's interactive portfolio agent. Ask me about my technical stack, data analytics backgrounds, or university specialization nodes!
+                    Hey! 👋 I am Rati's interactive FAQ agent. Ask me about my core skills, full-stack web projects, Chandigarh University background, or data analytics training!
                 </div>
             </div>
         </div>
-
-        <div class="px-4 pb-3 bg-slate-900/40 flex flex-wrap gap-2">
-            <button onclick="sendSuggestion('What are your skills?')" class="text-xs font-medium bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-indigo-500/40 text-slate-400 hover:text-indigo-300 px-3 py-2 rounded-xl transition-all duration-200">⚡ Core Skills</button>
-            <button onclick="sendSuggestion('Tell me about your projects')" class="text-xs font-medium bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-indigo-500/40 text-slate-400 hover:text-indigo-300 px-3 py-2 rounded-xl transition-all duration-200">🛠️ Key Projects</button>
-            <button onclick="sendSuggestion('Deloitte Experience')" class="text-xs font-medium bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-indigo-500/40 text-slate-400 hover:text-indigo-300 px-3 py-2 rounded-xl transition-all duration-200">📊 Data Internship</button>
-        </div>
-
-        <form id="chat-form" onsubmit="handleMessageSubmit(event)" class="p-4 bg-slate-950/60 border-t border-slate-800/60 flex gap-2.5 items-center">
-            <input
-                type="text"
-                id="user-input"
-                placeholder="Message the agent..."
-                class="flex-1 bg-slate-900/50 border border-slate-800 focus:border-indigo-500 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-500 focus:outline-none transition-all duration-200 focus:shadow-[0_0_15px_rgba(99,102,241,0.05)]"
-                required
-                autocomplete="off"
-            >
-            <button type="submit" class="p-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl shadow-md shadow-indigo-600/10 active:scale-95 transition-all flex items-center justify-center shrink-0">
-                <i data-lucide="arrow-up" class="w-4 h-4"></i>
-            </button>
-        </form>
-
-    </div>
-
-    <script>
-        lucide.createIcons();
-
-        // High-Fidelity Dataset Mapping Rati's Credentials
-        const FAQ_DATASET = [
-            { keywords: ["hello", "hi", "hey", "who are you"], response: "Hello! I am Rati Sharma's AI portfolio representative. Ask me about my development skills, Chandigarh University background, or analytics milestones!" },
-            { keywords: ["skills", "languages", "tech", "stack"], response: "I code proficiently in C++, Java, JavaScript, React.js, HTML5, CSS3, and Tailwind CSS. I also build interactive performance dashboards using Tableau." },
-            { keywords: ["projects", "portfolio", "sudoku", "geopulse"], response: "My featured engineering work includes 'GeoPulse' (a real-time global climate incident monitor fetching live datasets from NASA APIs) and an automated 9x9 Sudoku grid logic solver." },
-            { keywords: ["deloitte", "internship", "experience", "analytics"], response: "I successfully scaled data analytics logic profiles inside the Deloitte Virtual Internship track, engineering dynamic diagnostic tools with Google Spreadsheets and Tableau." }
-        ];
-
-        const chatFeed = document.getElementById('chat-feed');
-
-        function appendMessage(sender, text) {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `flex gap-3 max-w-[85%] ${sender === 'user' ? 'ml-auto flex-row-reverse' : ''}`;
-            
-            const avatar = sender === 'user' 
-                ? `<div class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-xs font-bold shadow-md shadow-indigo-600/10 shrink-0">RS</div>`
-                : `<div class="w-9 h-9 rounded-xl bg-slate-800 text-indigo-400 border border-slate-700/60 flex items-center justify-center text-xs font-bold shrink-0"><i data-lucide="bot" class="w-4 h-4"></i></div>`;
-
-            const bubbleClass = sender === 'user'
-                ? `bg-indigo-600 text-white rounded-tr-none shadow-md shadow-indigo-600/5`
-                : `bg-slate-800/50 text-slate-100 border border-slate-700/30 rounded-tl-none`;
-
-            msgDiv.innerHTML = `
-                ${avatar}
-                <div class="p-3.5 ${bubbleClass} rounded-2xl text-sm leading-relaxed">
-                    ${text}
-                </div>
-            `;
-            chatFeed.appendChild(msgDiv);
-            lucide.createIcons();
-            chatFeed.scrollTop = chatFeed.scrollHeight;
-        }
-
-        // Simulates an elegant typing wait mechanism
-        function appendTypingIndicator() {
-            const indicator = document.createElement('div');
-            indicator.id = 'typing-indicator';
-            indicator.className = 'flex gap-3 max-w-[85%]';
-            indicator.innerHTML = `
-                <div class="w-9 h-9 rounded-xl bg-slate-800 text-indigo-400 border border-slate-700/60 flex items-center justify-center shrink-0"><i data-lucide="bot" class="w-4 h-4"></i></div>
-                <div class="bg-slate-800/40 border border-slate-700/20 p-4 rounded-2xl rounded-tl-none flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce" style="animation-delay: -0.3s"></span>
-                    <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce" style="animation-delay: -0.15s"></span>
-                    <span class="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce"></span>
-                </div>
-            `;
-            chatFeed.appendChild(indicator);
-            lucide.createIcons();
-            chatFeed.scrollTop = chatFeed.scrollHeight;
-        }
-
-        function removeTypingIndicator() {
-            const el = document.getElementById('typing-indicator');
-            if(el) el.remove();
-        }
-
-        function engineProcess(query) {
-            const tokens = query.toLowerCase().replace(/[^\w\s]/g, "").split(/\s+/);
-            let response = "I couldn't quite find that match. Try targeting parameters like 'skills', 'projects', or 'Deloitte experience'!";
-            let bestScore = 0;
-
-            FAQ_DATASET.forEach(faq => {
-                let score = 0;
-                tokens.forEach(token => {
-                    faq.keywords.forEach(key => { if(key.includes(token) || token.includes(key)) score++; });
-                });
-                if (score > bestScore) { bestScore = score; response = faq.response; }
-            });
-            return response;
-        }
-
-        function executeCycle(text) {
-            appendMessage('user', text);
-            appendTypingIndicator();
-            
-            setTimeout(() => {
-                removeTypingIndicator();
-                const output = engineProcess(text);
-                appendMessage('bot', output);
-            }, 650);
-        }
-
-        function handleMessageSubmit(e) {
-            e.preventDefault();
-            const inputEl = document.getElementById('user-input');
-            const targetText = inputEl.value.trim();
-            if(!targetText) return;
-
-            executeCycle(targetText);
-            inputEl.value = '';
-        }
-
-        function sendSuggestion(text) {
-            executeCycle(text);
-        }
-    </script>
-</body>
-</html>
