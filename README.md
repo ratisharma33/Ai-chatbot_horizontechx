@@ -15,7 +15,7 @@
 This repository contains my official project submissions for the **Horizon TechX data science and AI Internship**. To fulfill the completion criteria efficiently, this project as a seamless **All-in-One single-file application** (`index.html`) that bundles two separate interactive Natural Language Processing (NLP) modules into a single, clean workspace.
 
 ### 🔗 Live Deployment Matrix
-👉 **[Click Here to Launch the Live App Interface](https://your-username.github.io/your-repo-name/)** *(Note: Replace the link above with your actual live GitHub Pages URL!)*
+👉 **[Click Here to Launch the Live App Interface](https://ratisharma33.github.io/Ai-chatbot_horizontechx/)** 
 
 ---
 
